@@ -73,6 +73,20 @@
 		FROM emp e, dept d
 		where e.deptno = d.deptno
 	</select>	
+	<resultMap type="empdept2" id="empRult2">
+		<association property="emp" javaType="emp">
+			<result column="ename" property="ename"/>
+		</association>
+		<association property="dept" javaType="dept">
+			<result column="dname" property="dname"/>
+		</association>
+	</resultMap>
+	<select id="getEmpDeptList2" resultMap="empRult2">
+		SELECT e.*, dname, loc
+		FROM emp e, dept d
+		where e.deptno = d.deptno
+	</select>	
+	
 	<select id="getEmpSalGrade" resultType="empsal">
 		SELECT e.*, grade
 		FROM emp e, salgrade s

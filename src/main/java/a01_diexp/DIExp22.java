@@ -9,6 +9,7 @@ import a01_diexp.mybatis.dao.A01_EmpDao;
 import springweb.z01_vo.Dept;
 import springweb.z01_vo.Emp;
 import springweb.z01_vo.EmpDept;
+import springweb.z01_vo.EmpDeptCom;
 import springweb.z01_vo.EmpGrade;
 
 public class DIExp22 {
@@ -69,7 +70,12 @@ public class DIExp22 {
 			System.out.print(eg.getSal()+"\t");
 			System.out.print(eg.getGrade()+"\n");
 		}
-		
+		List<EmpDeptCom> comps = dao.getEmpDeptList2();
+		System.out.println("# 객체안에 객체 #");
+		for(EmpDeptCom ed:comps) {
+			System.out.print(ed.getEmp().getEname()+"\t");
+			System.out.println(ed.getDept().getDname());
+		}
 		
 		ctx.close();
 		
